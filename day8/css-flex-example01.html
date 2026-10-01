@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-box {
+            /*선그리기 : 두계 선모양 색상*/
+            border: 1px solid black;
+            width: 400px;
+            height: 350px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .title{
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            padding-top: 20px; /*부모 자식간 사이 넓히기*/
+            margin-bottom: 50px; /*자식들끼리 (같은계층) 사이 넓히기*/
+        }
+        input{
+            width: 300px;
+            height: 40px;
+            border-radius: 2px;
+            border: 0;
+            border-bottom: 1px solid black;
+            outline: 0;
+            margin-top: 10px;
+
+        }
+        .btn{
+            margin-top: 25px;
+        }
+        .ok-btn{
+            width: 90px;
+            height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: rgb(135, 135, 255);
+            border: 0;
+            border-radius: 5px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            ,<div class="title">
+                Login
+            </div>
+            <div>
+                <input type="text" placeholder="ID">
+            </div>
+              <div>
+                <input type="text" placeholder="password">
+            </div>
+            <div class="btn">
+                <button type="button" class="ok-btn">로그인</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
