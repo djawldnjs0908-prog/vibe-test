@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 더하기 함수
+    // 매개변수 > x , y
+    // 리턴 > 덧셈 결과
+    // 함수는 자동으로 실행되지 않는다. 필요할 떄마다 호출해야한다
+    function add(x , y){
+    return x + y;
+    }
+    // 함수를 호출하여 결과를 result 변수에 대입
+    // 함수는 호출을 통해서 실행
+    // 함수실행 = 함수호출
+    const result = add (10, 11);
+
+    console.log('더하기 :' + result)
+
+    function nowDay() {
+        const time = new Date();
+        return time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate();
+    }
+
+    console.log(nowDay());
+</script>
+</html>
