@@ -1,0 +1,318 @@
+:root {
+  --page-bg: #F7F8FA;
+  --text-main: #1F2328;
+  --accent: #378ADD;
+
+  --card-main-bg: #E6F1FB;
+  --card-main-fg: #0C447C;
+  --card-main-sub: #185FA5;
+  --card-temp-bg: #FAECE7;
+  --card-temp-fg: #712B13;
+  --card-wind-bg: #EEEDFE;
+  --card-wind-fg: #3C3489;
+  --card-dir-bg: #FBEAF0;
+  --card-dir-fg: #72243E;
+  --card-humidity-bg: #E1F5EE;
+  --card-humidity-fg: #085041;
+  --card-pm10-bg: #EAF3DE;
+  --card-pm10-fg: #27500A;
+  --card-pm25-bg: #FAEEDA;
+  --card-pm25-fg: #633806;
+  --card-forecast-bg: #F1EFE8;
+  --card-forecast-fg: #2C2C2A;
+  --card-forecast-muted: #5F5E5A;
+
+  --radius-card: 16px;
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text-main);
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* 헤더 */
+.app-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.app-title .bi {
+  color: var(--accent);
+}
+
+.tab-pills {
+  background: #ECEEF1;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.tab-pills .nav-link {
+  border-radius: 999px;
+  color: #5F6368;
+  font-size: 14px;
+  padding: 6px 16px;
+}
+
+.tab-pills .nav-link.active {
+  background: #fff;
+  color: var(--text-main);
+  font-weight: 600;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* 지도 */
+.map {
+  width: 100%;
+  height: 320px;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 핀 */
+.pin-wrap {
+  position: relative;
+  width: 22px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.15s;
+  transform-origin: 11px 30px;
+}
+
+.pin-wrap:hover {
+  transform: scale(1.1);
+}
+
+.pin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  transform-origin: 11px 11px;
+  background: #fff;
+  border: 2px solid var(--accent);
+  margin-top: 0;
+}
+
+.pin-dot {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.pin-label {
+  position: absolute;
+  left: 26px;
+  top: 2px;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #3C4043;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 1px 6px;
+  border-radius: 6px;
+}
+
+.pin-wrap.selected .pin {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.pin-wrap.selected .pin-dot {
+  background: #fff;
+}
+
+.pin-wrap.selected .pin-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.pin-label .spinner-border {
+  width: 10px;
+  height: 10px;
+  border-width: 2px;
+  vertical-align: -1px;
+}
+
+/* 카드 공통 */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.info-card {
+  border-radius: var(--radius-card);
+  padding: 18px 20px;
+  transition: transform 0.2s;
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+}
+
+.card-label {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-value {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 8px;
+}
+
+.card-sub {
+  font-size: 14px;
+  margin-top: 4px;
+  min-height: 21px;
+}
+
+/* 메인 카드 */
+.main-card {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--card-main-bg);
+  color: var(--card-main-fg);
+}
+
+.main-name {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.main-sub {
+  font-size: 14px;
+  color: var(--card-main-sub);
+}
+
+.main-temp {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 12px;
+}
+
+.main-desc {
+  font-size: 16px;
+  color: var(--card-main-sub);
+}
+
+/* 상세 카드 색상 */
+.card-temp { background: var(--card-temp-bg); color: var(--card-temp-fg); }
+.card-wind { background: var(--card-wind-bg); color: var(--card-wind-fg); }
+.card-dir { background: var(--card-dir-bg); color: var(--card-dir-fg); }
+.card-humidity { background: var(--card-humidity-bg); color: var(--card-humidity-fg); }
+.card-pm10 { background: var(--card-pm10-bg); color: var(--card-pm10-fg); }
+.card-pm25 { background: var(--card-pm25-bg); color: var(--card-pm25-fg); }
+
+/* 5일 예보 */
+.forecast-card {
+  background: var(--card-forecast-bg);
+  color: var(--card-forecast-fg);
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.forecast-day {
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 12px;
+  padding: 14px 8px;
+  text-align: center;
+}
+
+.forecast-weekday {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.forecast-emoji {
+  font-size: 32px;
+  line-height: 1.4;
+}
+
+.forecast-desc {
+  font-size: 13px;
+  color: var(--card-forecast-muted);
+}
+
+.forecast-temp {
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+.forecast-temp .max {
+  font-weight: 600;
+}
+
+.forecast-temp .min {
+  color: var(--card-forecast-muted);
+}
+
+/* 로딩 */
+.placeholder {
+  border-radius: 6px;
+  min-height: 0.9em;
+}
+
+/* 태블릿 */
+@media (max-width: 991.98px) {
+  .map {
+    height: 260px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .main-card {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 767.98px) {
+  .map {
+    height: 220px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card-value {
+    font-size: 24px;
+  }
+
+  .main-temp {
+    font-size: 48px;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(5, minmax(84px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+}

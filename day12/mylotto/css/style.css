@@ -1,0 +1,221 @@
+:root {
+  --ball-yellow: #fbc400;
+  --ball-blue: #69c8f2;
+  --ball-red: #ff7272;
+  --ball-gray: #aaaaaa;
+  --ball-green: #b0d840;
+  --fixed-color: #0d6efd;
+  --excluded-color: #dc3545;
+  --page-bg: #f5f6f8;
+}
+
+body {
+  background: var(--page-bg);
+}
+
+/* 선택판 카드 구분선 */
+.picker-card {
+  border-top-width: 3px;
+}
+
+.picker-fixed {
+  border-top-color: var(--fixed-color);
+}
+
+.picker-excluded {
+  border-top-color: var(--excluded-color);
+}
+
+.picker-msg:empty {
+  display: none;
+}
+
+/* 번호 선택 그리드 */
+.num-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+}
+
+.num-btn {
+  aspect-ratio: 1;
+  width: 100%;
+  padding: 0;
+  border: 1px solid #ced4da;
+  border-radius: 50%;
+  background: #fff;
+  color: #212529;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.num-btn:hover:not(:disabled) {
+  border-color: #6c757d;
+}
+
+.num-btn:focus-visible {
+  outline: 2px solid var(--fixed-color);
+  outline-offset: 2px;
+}
+
+.num-btn.fixed {
+  background: var(--fixed-color);
+  border-color: var(--fixed-color);
+  color: #fff;
+}
+
+.num-btn.excluded {
+  background: var(--excluded-color);
+  border-color: var(--excluded-color);
+  color: #fff;
+}
+
+.num-btn:disabled {
+  border-style: dashed;
+  color: #adb5bd;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 로또 공 */
+.ball {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: inset -2px -3px 4px rgba(0, 0, 0, 0.15);
+}
+
+.ball-sm {
+  width: 28px;
+  height: 28px;
+  font-size: 0.8rem;
+}
+
+.ball-yellow { background: var(--ball-yellow); }
+.ball-blue { background: var(--ball-blue); }
+.ball-red { background: var(--ball-red); }
+.ball-gray { background: var(--ball-gray); }
+.ball-green { background: var(--ball-green); }
+
+.ball.is-fixed {
+  outline: 2px solid var(--fixed-color);
+  outline-offset: 2px;
+}
+
+.ball.pop {
+  animation: pop 0.3s ease-out both;
+}
+
+@keyframes pop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 결과 줄 */
+.set-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.set-row:last-child {
+  border-bottom: none;
+}
+
+.set-label {
+  width: 18px;
+  font-weight: 700;
+  color: #6c757d;
+}
+
+.set-balls {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.set-meta {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 생성 기록 */
+.history-item {
+  border-top: 1px solid #eee;
+}
+
+.history-item summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.history-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.history-item summary .bi-chevron-right {
+  transition: transform 0.15s;
+}
+
+.history-item[open] summary .bi-chevron-right {
+  transform: rotate(90deg);
+}
+
+.history-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+
+.history-sets {
+  padding: 0 0 8px 24px;
+}
+
+.history-sets .set-row {
+  padding: 4px 0;
+  border-bottom: none;
+}
+
+@media (max-width: 575.98px) {
+  .num-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .ball {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .ball-sm {
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+  }
+
+  .set-balls {
+    gap: 4px;
+  }
+
+  .set-meta .badge {
+    display: none;
+  }
+}

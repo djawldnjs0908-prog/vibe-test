@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로또 번호 생성기</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <!-- ① 헤더 -->
+  <nav class="navbar bg-white border-bottom mb-4">
+    <div class="container">
+      <span class="navbar-brand fw-bold">
+        <i class="bi bi-stars text-warning"></i> 로또 번호 생성기
+      </span>
+    </div>
+  </nav>
+
+  <main class="container pb-5">
+    <!-- ②③ 고정수 / 제외수 선택판 -->
+    <div class="row g-3 mb-3">
+      <div class="col-12 col-md-6">
+        <section class="card picker-card picker-fixed h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h2 class="h6 mb-0">
+                <i class="bi bi-pin-angle"></i> 고정수
+                <span class="badge text-bg-primary ms-1"><span id="fixedCount">0</span>/5</span>
+              </h2>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-action="clear" data-type="fixed">
+                <i class="bi bi-eraser"></i> 초기화
+              </button>
+            </div>
+            <p class="small text-secondary mb-2">결과에 꼭 들어갈 번호를 골라요.</p>
+            <div id="fixedGrid" class="num-grid" data-type="fixed" role="group" aria-label="고정수 선택"></div>
+            <p id="fixedMsg" class="picker-msg small text-danger mt-2 mb-0" aria-live="polite"></p>
+          </div>
+        </section>
+      </div>
+      <div class="col-12 col-md-6">
+        <section class="card picker-card picker-excluded h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h2 class="h6 mb-0">
+                <i class="bi bi-slash-circle"></i> 제외수
+                <span class="badge text-bg-danger ms-1"><span id="excludedCount">0</span>/39</span>
+              </h2>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-action="clear" data-type="excluded">
+                <i class="bi bi-eraser"></i> 초기화
+              </button>
+            </div>
+            <p class="small text-secondary mb-2">결과에서 뺄 번호를 골라요.</p>
+            <div id="excludedGrid" class="num-grid" data-type="excluded" role="group" aria-label="제외수 선택"></div>
+            <p id="excludedMsg" class="picker-msg small text-danger mt-2 mb-0" aria-live="polite"></p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ④ 생성 버튼 -->
+    <button type="button" id="generateBtn" class="btn btn-primary btn-lg w-100 mb-3">
+      <i class="bi bi-dice-5"></i> 번호 생성 (5세트)
+    </button>
+
+    <!-- ⑤ 이번 생성 결과 -->
+    <section class="card mb-3">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h2 class="h6 mb-0">이번 생성 결과</h2>
+          <button type="button" id="copyAllBtn" class="btn btn-sm btn-outline-primary" disabled>
+            <i class="bi bi-clipboard"></i> 전체 복사
+          </button>
+        </div>
+        <div id="result">
+          <p class="empty-msg text-secondary small mb-0">번호 생성 버튼을 눌러보세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ 생성 기록 -->
+    <section class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h2 class="h6 mb-0">
+            <i class="bi bi-clock-history"></i> 생성 기록
+            <span class="text-secondary fw-normal small"><span id="historyCount">0</span>건 · 최근순</span>
+          </h2>
+          <button type="button" id="clearHistoryBtn" class="btn btn-sm btn-outline-danger">
+            <i class="bi bi-trash"></i> 전체 삭제
+          </button>
+        </div>
+        <div id="history"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 토스트 -->
+  <div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+    <div id="toast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div id="toastBody" class="toast-body"></div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="닫기"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

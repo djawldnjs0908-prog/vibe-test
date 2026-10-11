@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .canvas{
+            width: 600px;
+            height: 500px;
+            overflow: auto; /*내용이 영역을 벗어나면 자동 스크롤*/
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box {
+        width: 100px;
+            height: 100px;
+            border: 1px solid black; 
+            background-color: red;
+            margin: 10px; /* 거리를 벌리는 함수 */         
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas" id="canvas"></div> 
+    <div>
+    <button type="button" id='makeBtn'>생성</button> 
+    <button type="button" id='delBtn'>삭제</button>
+    </div>
+</body>
+<script>
+    const makeBtn = document.getElementById('makeBtn');
+    const delBtn = document.getElementById('delBtn');
+
+    //함수를 쓸 때 소괄호까지 붙이는 건 실행해라, 즉 호출의 의미
+    //항수를 쓸 때 소괄호를 빼고 쓰는 건 이름을 알려줄 때, 실행의 의미는 아님
+    //버튼에다가 이벤트를 부여할 건데 클릭을 발생하면 네가 실행할 건 메이크박스야 그래서 이건 소괄호 없음
+    //클릭이 언제 발생할지 모르는데 클릭이 발생되면 메이크박스를 찾아가 이거는 메이크박스 옆에 소괄호를 붙여야함
+    makeBtn.addEventListener('click', makeBox);
+    delBtn.addEventListener('click', delBox);
+
+    const boxes = [];
+
+    function makeBox() {
+        const newBox = document.createElement('div');
+        newBox.className = 'box';
+        const canvas = document.getElementById('canvas');
+        //배열에 박스 넣기
+        boxes.push(newBox);
+        
+        for(let i = 0; i < boxes.length; i++){
+        canvas.append(boxes[i]);
+    }
+}
+
+    function delBox(){
+        if(boxes.length > 0){
+            //배열하나 삭제
+            boxes.pop(); //배열의 마지막 요소 삭제
+        }
+        const canvas = document.getElementById('canvas');
+        canvas.innerHTML = '';
+
+      for(let i = 0; i < boxes.length; i++){
+        canvas.append(boxes[i]);
+    }
+}
+
+</script>
+</html>

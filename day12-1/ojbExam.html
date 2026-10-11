@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+,<script>
+    //function은 지금부터 이 함수를 만들 거야 라고 알리는 단어
+    function Car (name, price){
+    //클래스 변수에서 this를 꼭 붙여줘야 함. 스크립트에서 . 은 ~의 라고 생각하면 됨
+    this.name = name;
+    this.price = price;
+    //이게 없으면 info가 읽어올 값이 없기 때문에 해당 이름표를 붙여주고, 아래와 같이 이 자동차에 함수 버튼을 달아라는 거임
+
+    //클래스 함수
+    this.info = function(){
+        // 원래는 '이름 : ' + this.name; 으로 쳐야하는데, 이걸 플러스 없이 한 문장으로 쓰고 싶은 경우 `을 쓰고 자바스크립트 변수다라는 표현을 위해 $를 쓰고 중괄호로 감싼다
+        return `이름 : ${this.name} , 가격 : ${this.price} 원 `;
+        //이 자동차한테 '자기 이름과 가격 말하기' 버튼을 달아주는" 코드라고 생각하면 됨
+    }
+    }
+    //여기까지는 설계도를 만드는 거라고 생각하면 됨
+
+    //클래스를 선언. 이걸 인스턴스라고 하며, 실제로 클래스에 대입하여 구현하는 것
+    const car = new Car('붕붕이', '3천만');
+    //팝업을 띄우는 함수
+    alert(car.info());
+    
+</script>
+</html>

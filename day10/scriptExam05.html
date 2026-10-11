@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num01"> +
+    <input type="number" id="num02"> =
+    <span id="result">?</span><br>
+    <button type="button" onclick="add();">결과</button>
+</body>
+<script>
+function add(){
+    //자바스크립트에서 input 값을 가져오면 무조건 문자로 처리 됨
+    const num01 = document.getElementById('num01').value;
+    const num02 = document.getElementById('num02').value; 
+    const result = Number(num01) + Number(num02);
+    const resultSpan = document.getElementById('result');
+
+    resultSpan.textContent = result;
+}
+</script>
+</html>
